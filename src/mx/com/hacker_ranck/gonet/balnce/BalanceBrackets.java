@@ -12,35 +12,39 @@ public class BalanceBrackets {
 	 // Complete the isBalanced function below.
     static String isBalanced(String s) {
     		String sAux=s;
-    		char d=sAux.charAt(0);
-    		char f= sAux.charAt(sAux.length()-1);
-    		if(sAux.length()%2 ==0) {
-    			for(int l=0; l<sAux.length()/2;l++) {
-    				System.out.println("ini "+sAux.charAt(l));
-    				System.out.println("fin "+sAux.charAt((sAux.length()-1)-l));
-    				boolean com = compara(sAux.charAt(l), sAux.charAt((sAux.length()-1)-l));
-    				if (!com) {
-    					return "NO";
+    		int[] corchetes= {0,0};
+    		int[] parentesis= {0,0};
+    		int[] llaves= {0,0};
+    		if(sAux.length()%2==0) {
+    			for(int l=0; l<sAux.length();l++) {
+    				if(s.charAt(l)=='{') {
+    					llaves[0]+=1;
+    				}else if(s.charAt(l)=='}') {
+    					llaves[1]+=1;
+    				}else if(s.charAt(l)=='(') {
+    					parentesis[0]+=1;
+    				}else if(s.charAt(l)==')') {
+    					parentesis[1]+=1;
+    				}else if(s.charAt(l)=='[') {
+    					corchetes[0]+=1;
+    				}else if(s.charAt(l)==']') {
+    					corchetes[1]+=1;
     				}
     			}
-    			return "YES";
+    			return compara(corchetes, parentesis, llaves);
     		}else {
-
-        		return "NO";
+    			return "NO";
     		}
     		
+    		
     }
-    static boolean compara(char ini, char fin) {
-    	if (ini=='{' && fin=='}') {
-    		return true;
-    	}else if (ini=='(' && fin==')') {
-    		return true;
-    	}else if(ini=='[' && fin==']') {
-    		return true;
+    static String compara(int[] cor, int[] llav, int[] par) {
+    	if(cor[0]==cor[1]&& llav[0]==llav[1] && par[0]==par[1]) {
+    		return "YES";
     	}
     	else {
-    		return false;
-    	}
+    		return "NO";
+    	}   	
     }
 
     private static final Scanner scanner = new Scanner(System.in);
