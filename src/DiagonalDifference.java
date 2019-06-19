@@ -14,13 +14,6 @@ import static java.util.stream.Collectors.toList;
 
 class Result {
 
-    /*
-     * Complete the 'diagonalDifference' function below.
-     *
-     * The function is expected to return an INTEGER.
-     * The function accepts 2D_INTEGER_ARRAY arr as parameter.
-     */
-
     public static int diagonalDifference(List<List<Integer>> arr) {
     	
     	int sumad1= 0;
@@ -32,15 +25,15 @@ class Result {
     		System.out.println(arr.get(1).get(2));
     	}
     	System.out.println("dato "+arr.size()+" "+sumad1+" "+sumad2);
-    	
+    
     	
 		return Math.abs(sumad1-sumad2);
     }
 
 }
 
- class Solution{
-    public static void main(String[] args) throws IOException {
+ class Solutiones{
+   public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("/Users/cam06/Desktop/H4ck3rR4nck/HackerRanck/src/diagonal.txt"));
 
