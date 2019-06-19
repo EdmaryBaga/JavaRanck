@@ -14,13 +14,32 @@ class Solution {
     // Complete the isValid function below.
     static String isValid(String s) {
     	Map<String,Integer> abcdario= new HashMap<String,Integer>();
-    	abcdario.put("g",6);
-    	abcdario.put("b", 7);
-    	int aux = abcdario.get("g")+1;
-    	abcdario.put("g",aux);
-    	System.out.println(abcdario.get("g"));
-
-    	return "No";
+    	for(char v : s.toCharArray()) {
+    		String key= Character.toString(v);
+    		if(!abcdario.containsKey(key)){
+    			abcdario.put(key,1);
+    		}
+    		else {
+    			int valorAux= abcdario.get(key)+1;
+    			abcdario.put(key,valorAux);
+    		}
+    	}
+    		Set<String> comparador= abcdario.keySet();
+    		
+    		
+    		Object[] arrayClients = (Object[]) comparador.toArray();
+    		//System.out.println(arrayClients[0]);
+    		int diferentes=0;
+    		int valorP = abcdario.get(arrayClients[0]);
+    		for(int x:abcdario.values()) {
+    			 if(valorP!=x) {
+    				 diferentes+=1;
+    			}
+    			 if(diferentes > 1 || Math.abs(valorP-x)>1) {
+    				 return "NO";
+    			 }
+    		}
+    	return "YES";
     }
 
     private static final Scanner scanner = new Scanner(System.in);
