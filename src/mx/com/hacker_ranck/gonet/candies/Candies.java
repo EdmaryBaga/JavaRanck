@@ -9,25 +9,44 @@ import java.util.concurrent.*;
 import java.util.regex.*;
 
  class Solution {
+	 
+	 /*
+	  * fun candies(n: Int, arr: Array<Int>): Long {
+   var candies = IntArray(arr.size)
+   for (a in 0..n-1){
+       candies[a] = 1
+   }
+   for (a in 1..n-1){
+       if(arr[a] > arr[a-1]) {
+           candies[a] = candies[a-1] + 1
+       }
+   }
+   var fin = n-2
+   for (b in 1..n-1){
+       if(arr[fin] > arr[fin+1]) {
+           if (candies[fin] <= candies[fin+1]){
+               candies[fin] = candies[fin+1] + 1
+           }
+       }
+       fin--
+   }
+   var resul: Long = 0
+   for(x in 0..n-1) {
+       resul += candies[x]
+   }
+   return resul
+}
+	  * */
 
     // Complete the candies function below.
     static long candies(int n, int[] arr) {
-    	int[] dulces = new int[n];
-    	dulces[0]=1;
-    	int contadorDulces=1;
-    	for(int p=1; p<arr.length; p++) {
-    		if(arr[p-1]<arr[p]) {
-    			contadorDulces+=1;
-    			dulces[p]=contadorDulces;
-    		}
-    		else {
-    			contadorDulces/=2;
-    			dulces[p]=contadorDulces;
-    		}	
+    	long total =0;
+    	int[] dulces = new int[n-1];
+    	for(int c=0;c<n-1;c++){
+    		dulces[c]=1;
     	}
-    	int total=0;
     	for(int x:dulces) {
-    		total+=x;
+    		System.out.println(x);
     	}
        return total; 
     }
