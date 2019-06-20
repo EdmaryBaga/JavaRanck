@@ -11,6 +11,10 @@ import java.util.regex.*;
 class Solution {
 
 	
+	/*
+	 * select Name, upper(left(Occupation,1)) from OCCUPATIONS ORDER BY Name ASC;
+	 * */
+	
     // Complete the isValid function below.
     static String isValid(String s) {
     	Map<String,Integer> abcdario= new HashMap<String,Integer>();
