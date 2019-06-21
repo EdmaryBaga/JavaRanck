@@ -41,9 +41,9 @@ import java.util.regex.*;
     // Complete the candies function below.
     static long candies(int n, int[] arr) {
     	long total =0;
-    	int[] dulces = new int[n-1];
-    	for(int c=0;c<n-1;c++){
-    		dulces[c]=1;
+    	int[] dulces = new int[n];
+    	for(int c:dulces){
+    		c=1;
     	}
     	for(int x:dulces) {
     		System.out.println(x);
