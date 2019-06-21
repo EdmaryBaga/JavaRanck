@@ -4,6 +4,33 @@ import java.util.*;
 import java.util.ArrayList;
 import java.util.Collections;
 
+class Checker implements Comparator{
+
+	@Override
+	public int compare(Object o1, Object o2) {
+		Player p1=(Player)o1;
+		Player p2=(Player)o2;
+		if(p1.score==p2.score) {
+			return p1.name.compareTo(p2.name);
+		}else if(p1.name==p2.name) {
+			return 1;
+		}else {
+			return -1;
+		}
+	}
+    
+}
+
+class Player{
+    String name;
+    int score;
+    
+    Player(String name, int score){
+        this.name = name;
+        this.score = score;
+    }
+}
+
 class Student implements Comparable<Student>{
 	private int id;
 	private String fname;
@@ -25,19 +52,17 @@ class Student implements Comparable<Student>{
 	}
 	@Override
 	public int compareTo(Student o) {
-		double c1 = getCgpa();
-		double c2 = o.cgpa;
-		
-		String n1= getFname();
-		String n2 = o.fname;
-		
+				
 		if(getCgpa()==o.cgpa) {
 			return fname.compareTo(o.fname);
-		}
-		if(id<o.id) {
+		}else if(fname==o.fname) {
 			return id-o.id;
+		}else if(cgpa<o.cgpa) {
+			return 1;
 		}
-		return 0;
+		else {
+			return -1;
+		}
 	}
 }
 
@@ -61,7 +86,7 @@ class Solution {
       
 		Collections.sort(studentList);
       	for(Student st: studentList){
-			System.out.println(st.getCgpa());
+			System.out.println(st.getFname()+" "+st.getCgpa());
 		}
 	}
 	
