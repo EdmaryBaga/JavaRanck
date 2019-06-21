@@ -23,30 +23,20 @@ public class TeamFormation {
     		int m = scanner.nextInt();
         	equipos.get(r).add(m);
         	scanner.nextLine();
-        	
-        	
-            //String s = scanner.nextLine();
-               	 
-        	
-        	
-        	
-        	
-        	/*
-        	 * scanner.nextLine();
-        	equipos.add(niveles);
-        	niveles.clear();
-        	 * 
-        	 * int result = Equipos(s);
-            bufferedWriter.write(result);
-            System.out.println(result);
-            bufferedWriter.newLine();
-            */
         }
         
+		 
         for(int o=0; o<equipos.size();o++) {
-        	System.out.print(equipos.get(o).get(0));
+        	ArrayList<Integer> aux = new ArrayList<Integer>();
+        	aux.addAll(equipos.get(o));
+        	
+        	for(int x: aux) {
+        		System.out.print(x);
+        	}
+        	System.out.println(" ");
+        	
         }
-        System.out.println(" ");
+        
         scanner.close();
 	}
 
