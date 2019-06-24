@@ -15,6 +15,7 @@ public class TeamFormation {
 	public static void main(String[] args) throws IOException {
 		ArrayList<ArrayList<Integer>> listaEquipos = new ArrayList<>();
 		
+		
 		listaEquipos.addAll(recogeDatos());
 		for(int p=0; p<listaEquipos.size(); p++) {
 			listaEquipos.get(p).sort(new Comparator<Integer>() {
@@ -24,16 +25,12 @@ public class TeamFormation {
 			    }
 			});
 			int tam=verificaTamEquipoX(listaEquipos.get(p));
-			System.out.println("El menor tamaño es "+tam);
+			System.out.println(tam);
 		}
 		
 	}
 	
 	private static int verificaTamEquipoX(ArrayList<Integer> equipo) {
-		//IMPRIMIMOS LO QUE SE RESIVE
-		for(int x:equipo) {
-			System.out.print(x + " ");
-		}
 		Map<Integer, HashSet<Integer>> lista = new HashMap<>();
 		lista.put(1,new HashSet<Integer>());
 		int key=1;
@@ -45,7 +42,6 @@ public class TeamFormation {
 				lista.get(key).add(equipo.get(p));
 			}
 			else if(!(equipo.get(p)+1==equipo.get(p+1)) || equipo.get(p).equals(equipo.get(p+1))) {
-				//verificar si algun set contiene ese valor
 				lista.get(key).add(equipo.get(p));
 				key+=1;
 				lista.put(key,new HashSet<Integer>());
@@ -56,19 +52,7 @@ public class TeamFormation {
 				lista.get(key).add(equipo.get(p));
 			}
 		}
-		
-		for(int o=1; o<=lista.size(); o++) {
-			//lista.get(o).forEach(action);
-			System.out.println(" imprimiendo subgrupos");
-			
-			Iterator<Integer> i = lista.get(o).iterator(); 
-			while (i.hasNext()) {
-	            System.out.print(i.next()+" "); 
-	    } 
-			System.out.println(" ");
-		}
-		
-		System.out.print(" \n -------- * --------");	
+				
 		return BuscaElMenorTamaño(lista);
 	}
 	
