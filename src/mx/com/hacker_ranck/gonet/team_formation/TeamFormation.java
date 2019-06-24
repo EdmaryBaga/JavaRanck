@@ -23,7 +23,8 @@ public class TeamFormation {
 			        return o1.compareTo(o2);
 			    }
 			});
-			verificaTamEquipoX(listaEquipos.get(p));			
+			int tam=verificaTamEquipoX(listaEquipos.get(p));
+			System.out.println("El menor tamaño es "+tam);
 		}
 		
 	}
@@ -59,6 +60,7 @@ public class TeamFormation {
 		for(int o=1; o<=lista.size(); o++) {
 			//lista.get(o).forEach(action);
 			System.out.println(" imprimiendo subgrupos");
+			
 			Iterator<Integer> i = lista.get(o).iterator(); 
 			while (i.hasNext()) {
 	            System.out.print(i.next()+" "); 
@@ -66,32 +68,19 @@ public class TeamFormation {
 			System.out.println(" ");
 		}
 		
-		System.out.println(" \n -------- * --------");
+		System.out.print(" \n -------- * --------");	
+		return BuscaElMenorTamaño(lista);
+	}
+	
+	public static int BuscaElMenorTamaño(Map<Integer, HashSet<Integer>> lista) {
 		
-		
-		
-		
-		//ArrayList<Integer> le= Arrays.asList(equipo);	
-		
-		/*Map<Integer, HashSet<Integer>> lista = new HashMap<>();
-		lista.put(1,new HashSet<Integer>());
-		HashSet<String> eq = new HashSet<String>();
-		int contSubEquipos=1;
-		for(int p=0; p<equipo.size(); p++) {
-			if(!(lista.get(1).contains(equipo.get(p)))) {
-				lista.get(1).add(equipo.get(p));
-			}
-			else {
-				contSubEquipos+=1;
-				lista.put(contSubEquipos,new HashSet<Integer>());
-				lista.get(contSubEquipos).add(equipo.get(p));
+		int tam=lista.get(1).size();
+		for(int o=2; o<=lista.size(); o++) {
+			if(tam>lista.get(o).size()) {
+				tam= lista.get(o).size();
 			}
 		}
-		for(int p= 0; p<lista.get(1).size(); p++) {
-			System.out.println(lista.get(p));
-		}*/
-		
-		return 0;
+		return tam;
 	}
 	
 	public static ArrayList<ArrayList<Integer>> recogeDatos() {
