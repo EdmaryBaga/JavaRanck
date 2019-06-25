@@ -1,11 +1,14 @@
 package mx.com.hacker_ranck.gonet.team_formation;
 
+/*
+ * Falta:
+ * 1
+	15 1 1 1 2 2 2 3 3 3 4 4 4 5 5 5
+	Respuesta:5
+ * */
+
 import java.io.*;
 import java.util.*;
-import java.math.*;
-import java.security.*;
-import java.text.*;
-
 
 public class TeamFormation {
 	
@@ -15,19 +18,22 @@ public class TeamFormation {
 	public static void main(String[] args) throws IOException {
 		ArrayList<ArrayList<Integer>> listaEquipos = new ArrayList<>();
 		
-		
+		int tam=0;
 		listaEquipos.addAll(recogeDatos());
-		for(int p=0; p<listaEquipos.size(); p++) {
-			listaEquipos.get(p).sort(new Comparator<Integer>() {
-			    @Override
-			    public int compare(Integer o1, Integer o2) {
-			        return o1.compareTo(o2);
-			    }
-			});
-			int tam=verificaTamEquipoX(listaEquipos.get(p));
+		if(listaEquipos.size()==0) {
 			System.out.println(tam);
+		}else {
+			for(int p=0; p<listaEquipos.size(); p++) {
+				listaEquipos.get(p).sort(new Comparator<Integer>() {
+				    @Override
+				    public int compare(Integer o1, Integer o2) {
+				        return o1.compareTo(o2);
+				    }
+				});
+				tam=verificaTamEquipoX(listaEquipos.get(p));
+				System.out.println(tam);
+			}
 		}
-		
 	}
 	
 	private static int verificaTamEquipoX(ArrayList<Integer> equipo) {
